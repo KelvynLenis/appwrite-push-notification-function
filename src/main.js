@@ -15,7 +15,7 @@ export default async ({ req, res, log, error }) => {
       '23823y4237y472834',
       'Alerta',
       'Alerta de celular roubado',
-      ['6737e16c00091ac03260'],
+      ['6737dee2001ae4d5578e'],
     );
 
     log(`Successfully sent message: ${response}`);
