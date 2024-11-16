@@ -1,22 +1,22 @@
-import { sendPushNotification, throwIfMissing } from "./utils";
+import { Client } from "node-appwrite";
 
 export default async ({ req, res, log, error }) => {
-  // try {
-  //   throwIfMissing(req.body, ['deviceToken', 'message']);
-  //   throwIfMissing(req.bodyJson.message, ['title', 'body']);
-  // } catch (err) {
-  //   return res.json({ ok: false, error: err.message }, 400);
-  // }
+  const client = new Client();
 
-  // log(`Sending message to device: ${req.bodyJson.deviceToken}`);
+  const messaging = new sdk.Messaging(client);
+
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject(process.env.PROJECT_ID)
+    .setKey(process.env.API_SECRET_KEY)
 
   try {
-    const response = await sendPushNotification({
-      notification: {
-        title: 'Alerta',
-        body: 'Alerta de roubo emitido',
-      },
-    });
+    const response = await messaging.createPush(
+      '23823y4237y472834',
+      'Alerta',
+      'Alerta de celular roubado',
+      ['6737e16c00091ac03260'],
+    );
 
     log(`Successfully sent message: ${response}`);
 

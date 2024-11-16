@@ -1,4 +1,4 @@
-import * as sdk from "node-appwrite";
+import { Client } from "node-appwrite";
 
 const client = new sdk.Client();
 
@@ -24,7 +24,7 @@ export function throwIfMissing(obj, keys) {
 
 export async function sendPushNotification({ notification }) {
     return messaging.createPush(
-        '[MESSAGE_ID]',                          // messageId
+        '23823y4237y472834',                          // messageId
         notification.title,                               // title
         notification.body,                                // body
         ['6737e16c00091ac03260'],
