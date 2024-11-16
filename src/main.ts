@@ -1,20 +1,20 @@
 import { sendPushNotification, throwIfMissing } from "./utils";
 
 export default async ({ req, res, log, error }) => {
-  try {
-    throwIfMissing(req.body, ['deviceToken', 'message']);
-    throwIfMissing(req.bodyJson.message, ['title', 'body']);
-  } catch (err) {
-    return res.json({ ok: false, error: err.message }, 400);
-  }
+  // try {
+  //   throwIfMissing(req.body, ['deviceToken', 'message']);
+  //   throwIfMissing(req.bodyJson.message, ['title', 'body']);
+  // } catch (err) {
+  //   return res.json({ ok: false, error: err.message }, 400);
+  // }
 
-  log(`Sending message to device: ${req.bodyJson.deviceToken}`);
+  // log(`Sending message to device: ${req.bodyJson.deviceToken}`);
 
   try {
     const response = await sendPushNotification({
       notification: {
-        title: req.bodyJson.message.title,
-        body: req.bodyJson.message.body,
+        title: 'Alerta',
+        body: 'Alerta de roubo emitido',
       },
     });
 
