@@ -1,9 +1,9 @@
-import { Client } from "node-appwrite";
+import * as sdk from "node-appwrite";
 
 export default async ({ req, res, log, error }) => {
-  const client = new Client();
+  const client = new sdk.Client();
 
-  const messaging = new client.Messaging(client);
+  const messaging = new sdk.Messaging(client);
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1')
