@@ -6,11 +6,11 @@ const messaging = new sdk.Messaging(client);
 
 client
     .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject(process.env.PROJECT_ID!)         // Your project ID
-    .setKey(process.env.API_SECRET_KEY!)         // Your secret API key
+    .setProject(process.env.PROJECT_ID)         // Your project ID
+    .setKey(process.env.API_SECRET_KEY)         // Your secret API key
 
 export function throwIfMissing(obj, keys) {
-    const missing: string[] = [];
+    const missing = [];
     for (let key of keys) {
         if (!(key in obj) || !obj[key]) {
             missing.push(key);
