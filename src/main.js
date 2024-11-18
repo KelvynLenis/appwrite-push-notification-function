@@ -1,12 +1,10 @@
 import admin from 'firebase-admin';
 
 export default async ({ req, res, log, error }) => {
+  const serviceAccount = require("path/to/serviceAccountKey.json");
+
   admin.initializeApp({
-    credential: admin.credential.cert({
-      projectId: process.env.FCM_PROJECT_ID,
-      clientEmail: process.env.FCM_CLIENT_EMAIL,
-      privateKey: process.env.FCM_PRIVATE_KEY,
-    }),
+    credential: admin.credential.cert(serviceAccount),
     databaseURL: process.env.FCM_DATABASE_URL,
   });
 
