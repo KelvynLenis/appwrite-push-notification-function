@@ -1,32 +1,30 @@
-import { Client } from "node-appwrite";
+import admin from 'firebase-admin';
 
-const client = new sdk.Client();
-
-const messaging = new sdk.Messaging(client);
-
-client
-    .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
-    .setProject(process.env.PROJECT_ID)         // Your project ID
-    .setKey(process.env.API_SECRET_KEY)         // Your secret API key
+admin.initializeApp({
+	credential: admin.credential.cert({
+		projectId: process.env.FCM_PROJECT_ID,
+		clientEmail: process.env.FCM_CLIENT_EMAIL,
+		privateKey: process.env.FCM_PRIVATE_KEY,
+	}),
+	databaseURL: process.env.FCM_DATABASE_URL,
+});
 
 export function throwIfMissing(obj, keys) {
-    const missing = [];
-    for (let key of keys) {
-        if (!(key in obj) || !obj[key]) {
-            missing.push(key);
-        }
-    }
-    if (missing.length > 0) {
-        throw new Error(`Missing required fields: ${missing.join(', ')}`);
-    }
+	const missing = [];
+	for (let key of keys) {
+		if (!(key in obj) || !obj[key]) {
+			missing.push(key);
+		}
+	}
+	if (missing.length > 0) {
+		throw new Error(`Missing required fields: ${missing.join(', ')}`);
+	}
 }
 
-
-export async function sendPushNotification({ notification }) {
-    return messaging.createPush(
-        '23823y4237y472834',                          // messageId
-        notification.title,                               // title
-        notification.body,                                // body
-        ['6737e16c00091ac03260'],
-    );
+export async function sendPushNotification(payload) {
+	try {
+		return await admin.messaging().send(payload);
+	} catch (e) {
+		throw "error on messaging ";
+	}
 }

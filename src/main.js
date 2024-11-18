@@ -1,28 +1,31 @@
-import * as sdk from "node-appwrite";
+import { throwIfMissing, sendPushNotification } from './utils.js';
+
+throwIfMissing(process.env, [
+  'FCM_PROJECT_ID',
+  'FCM_PRIVATE_KEY',
+  'FCM_CLIENT_EMAIL',
+  'FCM_DATABASE_URL',
+]);
 
 export default async ({ req, res, log, error }) => {
-  const client = new sdk.Client();
+  try {
+    throwIfMissing(req.body, ['deviceToken', 'message']);
+    throwIfMissing(req.bodyJson.message, ['title', 'body']);
+  } catch (err) {
+    return res.json({ ok: false, error: err.message }, 400);
+  }
 
-  const messaging = new sdk.Messaging(client);
-
-  client
-    .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject(process.env.PROJECT_ID)
-    .setKey(process.env.API_SECRET_KEY)
-
-  // if (req.path === "/") {
-  //   // Use res object to respond with text(), json(), or binary()
-  //   // Don't forget to return a response!
-  //   return res.render("login");
-  // }
+  log(`Sending message to device: ${req.bodyJson.deviceToken}`);
 
   try {
-    const response = await messaging.createPush(
-      '23823y4237y472834',
-      'Alerta',
-      'Alerta de celular roubado',
-      ['6737dee2001ae4d5578e'],
-    );
+    const response = await sendPushNotification({
+      notification: {
+        title: req.bodyJson.message.title,
+        body: req.bodyJson.message.body,
+      },
+      data: req.bodyJson.data ?? {},
+      token: req.bodyJson.deviceToken,
+    });
 
     log(`Successfully sent message: ${response}`);
 
