@@ -1,9 +1,5 @@
 import admin from 'firebase-admin';
 
-
-export async function sendPushNotification(payload) {
-}
-
 export default async ({ req, res, log, error }) => {
   admin.initializeApp({
     credential: admin.credential.cert({
@@ -15,7 +11,7 @@ export default async ({ req, res, log, error }) => {
   });
 
   try {
-    await admin.messaging().send(payload);
+    await admin.messaging().send("payload");
     return res.json({ ok: true, messageId: response });
   } catch (e) {
     return res.json({ ok: false, error: 'Failed to send the message' }, 500);
