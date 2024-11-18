@@ -1,3 +1,4 @@
+import { sendPushNotification } from "./utils";
 
 export default async ({ req, res, log, error }) => {
   try {
