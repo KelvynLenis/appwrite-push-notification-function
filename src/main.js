@@ -18,8 +18,6 @@ export default async ({ req, res, log, error }) => {
     await admin.messaging().send(payload);
     return res.json({ ok: true, messageId: response });
   } catch (e) {
-    throw "error on messaging ";
     return res.json({ ok: false, error: 'Failed to send the message' }, 500);
   }
-
 };
