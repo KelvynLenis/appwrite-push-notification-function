@@ -12,7 +12,16 @@ module.exports = async ({ req, res, log, error }) => {
   });
 
   try {
-    await admin.messaging().send("payload");
+    const payload = {
+      notification: {
+        title: "req.bodyJson.message.title",
+        body: "req.bodyJson.message.body",
+      },
+      data: req.bodyJson.data ?? {},
+      token: "req.bodyJson.deviceToken",
+    }
+
+    await admin.messaging().send(payload);
     return res.json({ ok: true, messageId: response });
   } catch (e) {
     return res.json({ ok: false, error: 'Failed to send the message' }, 500);
