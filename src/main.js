@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
 
-export default async ({ req, res, log, error }) => {
+module.exports = async ({ req, res, log, error }) => {
 
   admin.initializeApp({
     credential: admin.credential.cert({
