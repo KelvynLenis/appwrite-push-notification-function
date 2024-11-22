@@ -1,6 +1,13 @@
 const { publishMessage, getClient } = require('./redis.js');
+const sdk = require("node-appwrite");
 
-export default async ({ req, res, log, error }) => {
+module.exports = async ({ req, res, log, error }) => {
+  const client = new sdk.Client();
+
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject(process.env.APP_WRITE_PROJECT_ID);
+
   try {
     const { deviceId, isStolen } = req.body;
 
