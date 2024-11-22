@@ -1,6 +1,6 @@
 import updateDocument from "./appwrite.js";
 
-export default async function getClient() {
+export async function getClient() {
   const { REDIS_PASSWORD, REDIS_HOST } = process.env;
 
   const client = createClient({
@@ -16,7 +16,7 @@ export default async function getClient() {
   return client;
 }
 
-export default async function publishMessage(client, channel, message, deviceId, isStolen) {
+export async function publishMessage(client, channel, message, deviceId, isStolen) {
   const redisPublisher = client.asPublisher();
   const redisSubscriber = client.asSubscriber();
 
