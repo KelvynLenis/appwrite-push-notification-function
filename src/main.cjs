@@ -1,4 +1,4 @@
-const { publishMessage, getClient } = require('./redis');
+const { publishMessage, getClient } = require('./redis.cjs');
 
 export default async ({ req, res, log, error }) => {
   try {
