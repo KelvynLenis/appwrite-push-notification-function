@@ -1,5 +1,4 @@
-const updateDocument = require("./appwrite");
-
+import { updateDocument } from "./appwrite";
 
 export async function getClient() {
   const { REDIS_PASSWORD, REDIS_HOST } = process.env;

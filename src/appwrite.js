@@ -1,4 +1,4 @@
-const sdk = require("node-appwrite");
+import { sdk } from "node-appwrite";
 
 export const client = new sdk.Client();
 

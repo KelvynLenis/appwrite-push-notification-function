@@ -1,7 +1,7 @@
-const admin = require('firebase-admin');
+import { admin } from 'firebase-admin';
 const { publishMessage, getClient } = require('./redis');
 
-module.exports = async ({ req, res, log, error }) => {
+export default async ({ req, res, log, error }) => {
   try {
     const { deviceId, isStolen } = req.body;
 
