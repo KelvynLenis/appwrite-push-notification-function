@@ -11,6 +11,8 @@ module.exports = async ({ req, res, log, error }) => {
   try {
     const { deviceId, isStolen } = req.body;
 
+    log(`Device ${deviceId} is stolen: ${isStolen}`);
+
     const client = getClient();
 
     publishMessage(client, 'notifications', 'Device stolen', deviceId, isStolen);
