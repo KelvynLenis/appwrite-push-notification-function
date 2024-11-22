@@ -1,8 +1,8 @@
-const { publishMessage, getClient } = require('./redis.js');
-const sdk = require("node-appwrite");
+import { publishMessage, getClient } from './redis.js';
+import { Client } from "node-appwrite";
 
-module.exports = async ({ req, res, log, error }) => {
-  const client = new sdk.Client();
+export default async ({ req, res, log, error }) => {
+  const client = new Client();
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1')
