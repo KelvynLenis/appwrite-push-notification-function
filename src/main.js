@@ -1,28 +1,15 @@
 const admin = require('firebase-admin');
+const { publishMessage, getClient } = require('./redis');
 
 module.exports = async ({ req, res, log, error }) => {
-
-  admin.initializeApp({
-    credential: admin.credential.cert({
-      projectId: process.env.FCM_PROJECT_ID,
-      clientEmail: process.env.FCM_CLIENT_EMAIL,
-      privateKey: process.env.FCM_PRIVATE_KEY.replace(/\\n/g, '\n'),
-    }),
-    databaseURL: process.env.FCM_DATABASE_URL,
-  });
-
   try {
-    const payload = {
-      notification: {
-        title: "req.bodyJson.message.title",
-        body: "req.bodyJson.message.body",
-      },
-      data: req.bodyJson.data ?? {},
-      token: "req.bodyJson.deviceToken",
-    }
+    const { deviceId, isStolen } = req.body;
 
-    await admin.messaging().send(payload);
-    return res.json({ ok: true, messageId: response });
+    const client = getClient();
+
+    publishMessage(client, 'notifications', 'Device stolen', deviceId, isStolen);
+
+    return res.json({ ok: true });
   } catch (e) {
     return res.json({ ok: false, error: 'Failed to send the message' }, 500);
   }
