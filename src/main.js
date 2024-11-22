@@ -9,10 +9,10 @@ module.exports = async ({ req, res, log, error }) => {
     .setProject(process.env.APP_WRITE_PROJECT_ID);
 
   try {
-    const { deviceId, isStolen } = req.body;
+    const { deviceId, isStolen } = JSON.parse(req.body);
 
-    log(req.body)
-    // log(`Device ${deviceId} is stolen: ${isStolen}`);
+    // log(req.body)
+    log(`Device ${deviceId} is stolen: ${isStolen}`);
 
     const client = getClient();
 
