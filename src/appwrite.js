@@ -8,7 +8,7 @@
 
 // export const databases = new sdk.Databases(client);
 
-module.exports = async function updateDocument(client, collectionId, documentId, data) {
+export default async function updateDocument(client, collectionId, documentId, data) {
   const databases = new sdk.Databases(client);
 
   return databases.updateDocument(collectionId, documentId, data);
