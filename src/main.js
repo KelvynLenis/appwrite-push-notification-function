@@ -1,4 +1,3 @@
-import { admin } from 'firebase-admin';
 const { publishMessage, getClient } = require('./redis');
 
 export default async ({ req, res, log, error }) => {
