@@ -6,6 +6,8 @@ export default async ({ req, res, log, error }) => {
     return res.text('Not found.', 404);
   }
 
+  log(`APP_WRITE_PROJECT_ID: ${process.env.APP_WRITE_PROJECT_ID}`);
+
   // const redisClient = getRedisClient();
   const client = new Client();
 
@@ -13,15 +15,17 @@ export default async ({ req, res, log, error }) => {
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject(process.env.APP_WRITE_PROJECT_ID);
 
+
+
   try {
     const { deviceId, isStolen } = JSON.parse(req.body);
 
     // log(req.body)
     log(`Device ${deviceId} is stolen: ${isStolen}`);
 
-    const databases = new Databases(client);
+    const db = new Databases(client);
 
-    await databases.updateDocument(
+    const response = await db.updateDocument(
       "673f3e7f002ac721c7f6",
       "673f3e8a0001a6d9233f",
       deviceId,
