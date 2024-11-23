@@ -1,6 +1,6 @@
 import { updateDocument } from "./appwrite.js";
 
-export async function getClient() {
+export async function getRedisClient() {
   const { _APP_REDIS_PASS, _APP_REDIS_HOST } = process.env;
 
   const client = createClient({

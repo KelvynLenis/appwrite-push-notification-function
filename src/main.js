@@ -1,4 +1,5 @@
-import { publishMessage, getClient } from './redis.js';
+import { publishMessage, getRedisClient } from './redis.js';
+import { sdk } from "node-appwrite";
 
 export default async ({ req, res, log, error }) => {
 
@@ -6,7 +7,8 @@ export default async ({ req, res, log, error }) => {
     return res.text('Not found.', 404);
   }
 
-  const client = getClient();
+  const redisClient = getRedisClient();
+  const client = new sdk.Client();
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1')
