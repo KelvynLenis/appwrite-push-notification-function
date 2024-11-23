@@ -6,7 +6,7 @@ export default async ({ req, res, log, error }) => {
     return res.text('Not found.', 404);
   }
 
-  const client = new getClient();
+  const client = getClient();
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1')
