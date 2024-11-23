@@ -20,7 +20,8 @@ export default async ({ req, res, log, error }) => {
     log(`Device ${deviceId} is stolen: ${isStolen}`);
 
     const databases = new Databases(client);
-    databases.updateDocument(
+
+    await databases.updateDocument(
       client,
       "673f3e7f002ac721c7f6",
       "673f3e8a0001a6d9233f",
