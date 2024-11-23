@@ -2,6 +2,11 @@ import { publishMessage, getClient } from './redis.js';
 import { Client } from "node-appwrite";
 
 export default async ({ req, res, log, error }) => {
+
+  if (req.method !== 'POST') {
+    return res.text('Not found.', 404);
+  }
+
   const client = new Client();
 
   client
