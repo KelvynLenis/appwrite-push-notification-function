@@ -19,7 +19,7 @@ export default async ({ req, res, log, error }) => {
     // log(req.body)
     log(`Device ${deviceId} is stolen: ${isStolen}`);
 
-    const databases = new sdk.Databases(client);
+    const databases = new Databases(client);
     databases.updateDocument(
       client,
       "673f3e7f002ac721c7f6",
