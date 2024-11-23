@@ -1,13 +1,12 @@
 import { updateDocument } from "./appwrite.js";
 
 export async function getClient() {
-  const { REDIS_PASSWORD, REDIS_HOST } = process.env;
+  const { _APP_REDIS_PASS, _APP_REDIS_HOST } = process.env;
 
   const client = createClient({
-    password: REDIS_PASSWORD,
+    password: _APP_REDIS_PASS,
     socket: {
-      host: REDIS_HOST,
-      port: 14714
+      host: _APP_REDIS_HOST,
     }
   });
 
