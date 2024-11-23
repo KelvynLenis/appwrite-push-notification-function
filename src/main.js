@@ -10,9 +10,9 @@ export default async ({ req, res, log, error }) => {
   // const redisClient = getRedisClient();
   const client = new Client();
 
-  // client
-  //   .setEndpoint('https://cloud.appwrite.io/v1')
-  //   .setProject(process.env.APP_WRITE_PROJECT_ID);
+  client
+    .setEndpoint('https://cloud.appwrite.io/v1')
+    .setProject(process.env.APP_WRITE_PROJECT_ID);
 
   try {
     const { deviceId, isStolen } = JSON.parse(req.body);
