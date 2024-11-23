@@ -22,7 +22,6 @@ export default async ({ req, res, log, error }) => {
     const databases = new Databases(client);
 
     await databases.updateDocument(
-      client,
       "673f3e7f002ac721c7f6",
       "673f3e8a0001a6d9233f",
       deviceId,
