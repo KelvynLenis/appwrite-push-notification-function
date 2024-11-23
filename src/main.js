@@ -1,5 +1,3 @@
-import { updateDocument } from './appwrite.js';
-import { publishMessage, getRedisClient } from './redis.js';
 import { Client } from "node-appwrite";
 
 export default async ({ req, res, log, error }) => {
@@ -21,7 +19,8 @@ export default async ({ req, res, log, error }) => {
     // log(req.body)
     log(`Device ${deviceId} is stolen: ${isStolen}`);
 
-    updateDocument(
+    const databases = new sdk.Databases(client);
+    databases.updateDocument(
       client,
       "673f3e7f002ac721c7f6",
       "673f3e8a0001a6d9233f",
