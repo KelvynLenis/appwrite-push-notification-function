@@ -34,6 +34,7 @@ export default async ({ req, res, log, error }) => {
 
     return res.json({ ok: true });
   } catch (e) {
+    error(e);
     return res.json({ ok: false, error: 'Failed to send the message' }, 500);
   }
 };
