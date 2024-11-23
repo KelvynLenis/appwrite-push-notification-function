@@ -7,7 +7,7 @@ export default async ({ req, res, log, error }) => {
     return res.text('Not found.', 404);
   }
 
-  // const redisClient = getRedisClient();
+  const redisClient = getRedisClient();
   // const client = new Client();
 
   // client
