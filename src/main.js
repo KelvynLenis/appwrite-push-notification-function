@@ -7,8 +7,8 @@ export default async ({ req, res, log, error }) => {
     return res.text('Not found.', 404);
   }
 
-  const redisClient = getRedisClient();
-  // const client = new Client();
+  // const redisClient = getRedisClient();
+  const client = new Client();
 
   // client
   //   .setEndpoint('https://cloud.appwrite.io/v1')
