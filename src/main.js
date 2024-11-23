@@ -19,16 +19,16 @@ export default async ({ req, res, log, error }) => {
     // log(req.body)
     log(`Device ${deviceId} is stolen: ${isStolen}`);
 
-    // const databases = new Databases(client);
+    const databases = new Databases(client);
 
-    // await databases.updateDocument(
-    //   "673f3e7f002ac721c7f6",
-    //   "673f3e8a0001a6d9233f",
-    //   deviceId,
-    //   {
-    //     isStolen
-    //   }
-    // )
+    await databases.updateDocument(
+      "673f3e7f002ac721c7f6",
+      "673f3e8a0001a6d9233f",
+      deviceId,
+      {
+        isStolen
+      }
+    )
 
     // publishMessage(client, 'notifications', 'Device stolen', deviceId, isStolen);
 
