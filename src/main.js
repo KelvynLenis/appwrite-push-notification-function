@@ -1,5 +1,5 @@
 import { Client, Databases } from "node-appwrite";
-import { getRedisClient } from "./redis";
+import { getRedisClient } from "./redis.js";
 
 export default async ({ req, res, log, error }) => {
 
