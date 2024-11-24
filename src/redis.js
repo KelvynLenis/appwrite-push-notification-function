@@ -26,15 +26,15 @@ export async function publishMessage(client, channel, message, deviceId, isStole
   redisSubscriber.on('message', async (channel, message) => {
     console.log(`Received message: ${message} from channel: ${channel}`);
 
-    updateDocument(
-      client,
-      "673f3e7f002ac721c7f6",
-      "673f3e8a0001a6d9233f",
-      deviceId,
-      {
-        isStolen
-      }
-    )
+    // updateDocument(
+    //   client,
+    //   "673f3e7f002ac721c7f6",
+    //   "673f3e8a0001a6d9233f",
+    //   deviceId,
+    //   {
+    //     isStolen
+    //   }
+    // )
   });
 
   redisPublisher.publish('notifications', message.toString());
