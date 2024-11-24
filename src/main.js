@@ -15,6 +15,7 @@ export default async ({ req, res, log, error }) => {
   client
     .setEndpoint('https://cloud.appwrite.io/v1')
     .setProject(process.env.APP_WRITE_PROJECT_ID)
+    .setKey(req.headers['x-appwrite-project'] ?? '');
 
   try {
     const { deviceId, isStolen } = JSON.parse(req.body);
