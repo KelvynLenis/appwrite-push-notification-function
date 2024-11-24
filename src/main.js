@@ -1,5 +1,5 @@
 import { Client, Databases } from "node-appwrite";
-import { getRedisClient } from "./redis.js";
+import { getRedisClient, publishMessage } from "./redis.js";
 
 export default async ({ req, res, log, error }) => {
 
@@ -33,7 +33,7 @@ export default async ({ req, res, log, error }) => {
     //   }
     // )
 
-    // publishMessage(client, 'notifications', 'Device stolen', deviceId, isStolen);
+    publishMessage(redisClient, 'notifications', 'Device stolen', deviceId, isStolen);
 
     return res.json({ ok: true });
   } catch (e) {
