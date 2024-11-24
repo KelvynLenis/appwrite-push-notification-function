@@ -22,6 +22,7 @@ export async function publishMessage(client, channel, message, deviceId, isStole
   // const redisSubscriber = client.asSubscriber();
 
   log(`Publishing message`);
+  client.subscribe('notifications');
 
   // redisSubscriber.subscribe('notifications');
 
