@@ -14,7 +14,7 @@ export default async ({ req, res, log, error }) => {
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject(process.env.APP_WRITE_PROJECT_ID)
+    .setProject(process.env._APP_WRITE_PROJECT_ID)
     .setKey(req.headers['X-Appwrite-Project'] ?? '');
 
   try {
