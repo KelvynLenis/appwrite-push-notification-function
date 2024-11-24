@@ -14,7 +14,7 @@ export default async ({ req, res, log, error }) => {
 
   client
     .setEndpoint('https://cloud.appwrite.io/v1')
-    .setProject(req.headers['x-appwrite-project'])
+    .setProject(process.env._APP_WRITE_PROJECT_ID)
     .setKey(process.env._APP_API_KEY);
 
   log(`X-Appwrite-Project: ${req.headers['x-appwrite-project']}`);
@@ -28,14 +28,14 @@ export default async ({ req, res, log, error }) => {
 
     const db = new Databases(client);
 
-    const response = await db.updateDocument(
-      "673f3e7f002ac721c7f6",
-      "673f3e8a0001a6d9233f",
-      "673f439d00309f190b99",
-      {
-        isStolen
-      }
-    )
+    // const response = await db.updateDocument(
+    //   "673f3e7f002ac721c7f6",
+    //   "673f3e8a0001a6d9233f",
+    //   "673f439d00309f190b99",
+    //   {
+    //     isStolen
+    //   }
+    // )
 
     // publishMessage(redisClient, 'notifications', 'Device stolen', deviceId, isStolen, log);
 
