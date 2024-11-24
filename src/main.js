@@ -17,6 +17,9 @@ export default async ({ req, res, log, error }) => {
     .setProject(process.env._APP_WRITE_PROJECT_ID)
     .setKey(process.env._APP_API_KEY);
 
+  log(`X-Appwrite-Project: ${req.headers['x-appwrite-project']}`);
+
+
   try {
     const { deviceId, isStolen } = JSON.parse(req.body);
 
