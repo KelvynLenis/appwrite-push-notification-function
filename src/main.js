@@ -27,7 +27,7 @@ export default async ({ req, res, log, error }) => {
     const response = await db.updateDocument(
       "673f3e7f002ac721c7f6",
       "673f3e8a0001a6d9233f",
-      deviceId,
+      "673f439d00309f190b99",
       {
         isStolen
       }
