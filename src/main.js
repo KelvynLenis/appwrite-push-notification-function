@@ -33,7 +33,7 @@ export default async ({ req, res, log, error }) => {
     //   }
     // )
 
-    // publishMessage(redisClient, 'notifications', 'Device stolen', deviceId, isStolen);
+    publishMessage(redisClient, 'notifications', 'Device stolen', deviceId, isStolen, log);
 
     return res.json({ ok: true });
   } catch (e) {

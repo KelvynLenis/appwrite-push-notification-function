@@ -17,9 +17,11 @@ export async function getRedisClient() {
   return client;
 }
 
-export async function publishMessage(client, channel, message, deviceId, isStolen) {
+export async function publishMessage(client, channel, message, deviceId, isStolen, log) {
   // const redisPublisher = client.asPublisher();
   // const redisSubscriber = client.asSubscriber();
+
+  log(`Publishing message: ${message} to channel: ${channel}`);
 
   // redisSubscriber.subscribe('notifications');
 
