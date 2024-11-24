@@ -7,7 +7,7 @@ export default async ({ req, res, log, error }) => {
     return res.text('Not found.', 404);
   }
 
-  log(`APP_WRITE_PROJECT_ID: ${process.env.APP_WRITE_PROJECT_ID}`);
+  log(`APP_WRITE_PROJECT_ID: ${process.env._APP_WRITE_PROJECT_ID}`);
 
   // const redisClient = getRedisClient();
   const client = new Client();
