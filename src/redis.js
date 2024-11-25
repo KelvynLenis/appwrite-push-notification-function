@@ -17,29 +17,29 @@ export async function getRedisClient() {
 }
 
 export async function publishMessage(client, channel, message, deviceId, isStolen, log) {
-  // const redisPublisher = client.asPublisher();
-  // const redisSubscriber = client.asSubscriber();
+  const redisPublisher = client.asPublisher();
+  const redisSubscriber = client.asSubscriber();
 
   log(`Publishing message`);
   // client.subscribe('notifications');
 
-  // redisSubscriber.subscribe('notifications');
+  redisSubscriber.subscribe('notifications');
 
-  // redisSubscriber.on('message', async (channel, message) => {
-  //   console.log(`Received message: ${message} from channel: ${channel}`);
+  redisSubscriber.on('message', async (channel, message) => {
+    console.log(`Received message: ${message} from channel: ${channel}`);
 
-  //   updateDocument(
-  //     client,
-  //     "673f3e7f002ac721c7f6",
-  //     "673f3e8a0001a6d9233f",
-  //     deviceId,
-  //     {
-  //       isStolen
-  //     }
-  //   )
-  // });
+    updateDocument(
+      client,
+      "673f3e7f002ac721c7f6",
+      "673f3e8a0001a6d9233f",
+      deviceId,
+      {
+        isStolen
+      }
+    )
+  });
 
-  // redisPublisher.publish('notifications', message.toString());
+  redisPublisher.publish('notifications', message.toString());
 
   // await client.publish(channel, message);
 }
