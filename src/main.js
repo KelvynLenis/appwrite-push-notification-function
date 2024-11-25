@@ -9,7 +9,7 @@ export default async ({ req, res, log, error }) => {
 
   log(`APP_WRITE_PROJECT_ID: ${process.env._APP_WRITE_PROJECT_ID}`);
 
-  // const redisClient = getRedisClient();
+  const redisClient = getRedisClient();
   const client = new Client();
 
   client
