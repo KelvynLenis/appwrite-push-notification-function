@@ -8,6 +8,7 @@ export async function getRedisClient() {
     password: _APP_REDIS_PASS,
     socket: {
       host: _APP_REDIS_HOST,
+      port: 15579
     }
   });
 
