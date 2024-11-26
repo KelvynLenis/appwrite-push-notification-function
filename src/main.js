@@ -29,16 +29,16 @@ export default async ({ req, res, log, error }) => {
 
 
     // (await redisClient).set('deviceId', deviceId);
-    // const response = await db.updateDocument(
-    //   "673f3e7f002ac721c7f6",
-    //   "673f3e8a0001a6d9233f",
-    //   deviceId,
-    //   {
-    //     isStolen
-    //   }
-    // )
+    const response = await db.updateDocument(
+      "673f3e7f002ac721c7f6",
+      "673f3e8a0001a6d9233f",
+      deviceId,
+      {
+        isStolen
+      }
+    )
 
-    publishMessage(redisClient, 'notifications', 'Device stolen', deviceId, isStolen, log);
+    // publishMessage(redisClient, 'notifications', 'Device stolen', deviceId, isStolen, log);
 
     return res.json({ ok: true });
   } catch (e) {
