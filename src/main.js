@@ -17,6 +17,7 @@ export default async ({ req, res, log, error }) => {
     .setProject(process.env._APP_WRITE_PROJECT_ID)
     .setKey(process.env._APP_API_KEY);
 
+  const db = new Databases(client);
   log(`X-Appwrite-Project: ${req.headers['x-appwrite-project']}`);
 
 
@@ -26,7 +27,6 @@ export default async ({ req, res, log, error }) => {
     // log(req.body)
     log(`Device ${deviceId} is stolen: ${isStolen}`);
 
-    const db = new Databases(client);
 
     // (await redisClient).set('deviceId', deviceId);
     const response = await db.updateDocument(
